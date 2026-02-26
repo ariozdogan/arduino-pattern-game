@@ -31,19 +31,19 @@ void lightPatternFlash(){
     else if (lightPatternArr[i] == 1){
       digitalWrite(yellowLedPin, HIGH);
       delay(500);
-      digitalWrite(yellowLedPin, HIGH);
+      digitalWrite(yellowLedPin, LOW);
       delay(500);
     }
     else if (lightPatternArr[i] == 2){
       digitalWrite(greenLedPin, HIGH);
       delay(500);
-      digitalWrite(greenLedPin, HIGH);
+      digitalWrite(greenLedPin, LOW);
       delay(500);
     }
     else {
       digitalWrite(redLedPin, HIGH);
       delay(500);
-      digitalWrite(redLedPin, HIGH);
+      digitalWrite(redLedPin, LOW);
       delay(500);
     }
   }
@@ -73,7 +73,7 @@ void userButtonPattern(){
       }
       else{
         incorrectButtonInput();
-
+        return;
       }
       break;
     }
@@ -82,7 +82,8 @@ void userButtonPattern(){
         break;
       }
       else{
-        //LOSE FUNCTION
+        incorrectButtonInput();
+        return;
       }
       break;
     } 
@@ -91,7 +92,8 @@ void userButtonPattern(){
         break;
       }
       else{
-        //LOSE FUNCTION
+        incorrectButtonInput();
+        return;
       }
       break;
     }
@@ -100,7 +102,8 @@ void userButtonPattern(){
         break;
       }
       else{
-        //LOSE FUNCTION
+        incorrectButtonInput();
+        return;
       }
       break;
     }
