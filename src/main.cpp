@@ -53,12 +53,12 @@ void incorrectButtonInput(){
   for(int i = 0; i < 4; i++){
     digitalWrite(blueLedPin, HIGH);
     digitalWrite(yellowLedPin, HIGH);
-    digitalWrite(greenButtonPin, HIGH);
+    digitalWrite(greenLedPin, HIGH);
     digitalWrite(redLedPin, HIGH);
     delay(250);
     digitalWrite(blueLedPin, LOW);
     digitalWrite(yellowLedPin, LOW);
-    digitalWrite(greenButtonPin, LOW);
+    digitalWrite(greenLedPin, LOW);
     digitalWrite(redLedPin, LOW);
     delay(250);
   };
@@ -73,7 +73,7 @@ void userButtonPattern(){
       }
       else{
         incorrectButtonInput();
-        
+
       }
       break;
     }
@@ -124,8 +124,7 @@ void setup() {
 
 void loop() {
 
-  addValue();
-  lightPatternFlash();
+  incorrectButtonInput();
 
   roundNumber += 1;
 }
