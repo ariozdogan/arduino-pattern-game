@@ -64,49 +64,23 @@ void incorrectButtonInput(){
   };
 }
 
-void userButtonPattern(){
-  for (int i = 0; i < roundNumber + 1; i++){
-    int currentLightFlash = lightPatternArr[i];
-    if (digitalRead(blueButtonPin) == HIGH){
-      if (currentLightFlash == 0){
-        break;
-      }
-      else{
-        incorrectButtonInput();
-        return;
-      }
-      break;
-    }
-    else if (digitalRead(yellowButtonPin) == HIGH){
-      if (currentLightFlash == 1){
-        break;
-      }
-      else{
-        incorrectButtonInput();
-        return;
-      }
-      break;
-    } 
-    else if (digitalRead(greenButtonPin) == HIGH){
-      if (currentLightFlash == 2){
-        break;
-      }
-      else{
-        incorrectButtonInput();
-        return;
-      }
-      break;
-    }
-    else{
-      if (currentLightFlash == 3){
-        break;
-      }
-      else{
-        incorrectButtonInput();
-        return;
-      }
-      break;
-    }
+void userLightFlashed(){
+  if()
+}
+
+void userButtonPattern(int lightPatternArr[]){
+  for(int i = 0; i < roundNumber + 1; i++){
+    int buttonPressed = userLightFlashed(); // function to get which button was pressed
+    lightUpLed(buttonPressed); //function to light the button that was pressed;
+
+    if(buttonPressed != pattern[i]){
+      incorrectButtonInput();
+      resetGame()
+      return;
+    };
+    delay(300);
+    turnOffLed
+
   }
 }
 
@@ -126,8 +100,8 @@ void setup() {
 }
 
 void loop() {
+  addValue();
 
-  incorrectButtonInput();
 
   roundNumber += 1;
 }
