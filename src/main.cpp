@@ -148,12 +148,12 @@ void setup() {
 }
 
 void loop() {
+  delay(1500);
   addValue();
   lightPatternFlash();
   userButtonPattern();
 
   roundNumber += 1;
-  delay(1500);
 }
 
 
