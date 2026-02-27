@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-
 const int blueLedPin = 13;
 const int yellowLedPin = 11;
 const int greenLedPin = 10;
@@ -64,26 +63,78 @@ void incorrectButtonInput(){
   };
 }
 
-void userLightFlashed(){
-  if()
-}
-
-void userButtonPattern(int lightPatternArr[]){
-  for(int i = 0; i < roundNumber + 1; i++){
-    int buttonPressed = userLightFlashed(); // function to get which button was pressed
-    lightUpLed(buttonPressed); //function to light the button that was pressed;
-
-    if(buttonPressed != pattern[i]){
-      incorrectButtonInput();
-      resetGame()
-      return;
-    };
-    delay(300);
-    turnOffLed
-
+int userLightFlashed(){
+  while(true){
+    if(digitalRead(blueButtonPin) == HIGH){
+      while(digitalRead(blueButtonPin) == HIGH);
+      return 0;
+    }
+    else if(digitalRead(yellowButtonPin) == HIGH){
+      while(digitalRead(yellowButtonPin) == HIGH);
+      return 1;
+    }
+    else if(digitalRead(greenButtonPin) == HIGH){
+      while(digitalRead(greenButtonPin) == HIGH);
+      return 2;
+    }
+    else if(digitalRead(redButtonPin) == HIGH){
+      while(digitalRead(redButtonPin) == HIGH);
+      return 3;
+    }
   }
 }
 
+void lightUpLed(int buttonPressed){
+  if(buttonPressed == 0){
+    digitalWrite(blueLedPin, HIGH);
+    delay(300);
+    digitalWrite(blueLedPin, LOW);
+  }
+  else if(buttonPressed == 1){
+    digitalWrite(yellowLedPin, HIGH);
+    delay(300);
+    digitalWrite(yellowLedPin, LOW);
+  }
+  else if(buttonPressed == 2){
+    digitalWrite(greenLedPin, HIGH);
+    delay(300);
+    digitalWrite(greenLedPin, LOW);
+  }
+  else if(buttonPressed == 3){
+    digitalWrite(redLedPin, HIGH);
+    delay(300);
+    digitalWrite(redLedPin, LOW);
+  }
+}
+
+void resetGame(){
+  incorrectButtonInput();
+  roundNumber = -1;
+  for(int i = 0; i < maxSize; i++){
+    lightPatternArr[i] = 0;
+  }
+}
+
+void turnOffLed(){
+  digitalWrite(blueLedPin, LOW);
+  digitalWrite(yellowLedPin, LOW);
+  digitalWrite(greenLedPin, LOW);
+  digitalWrite(redLedPin, LOW);
+}
+
+void userButtonPattern(){
+  for(int i = 0; i < roundNumber + 1; i++){
+    int buttonPressed = userLightFlashed(); 
+    lightUpLed(buttonPressed);
+
+    if(buttonPressed != lightPatternArr[i]){
+      resetGame();
+      return;
+    };
+    delay(300);
+    turnOffLed();
+  }
+}
 
 void setup() {
   pinMode(yellowLedPin, OUTPUT);
@@ -94,16 +145,15 @@ void setup() {
   pinMode(greenButtonPin, INPUT);
   pinMode(redLedPin, OUTPUT);
   pinMode(redButtonPin, INPUT);
-
-  randomSeed(analogRead(3));
-
 }
 
 void loop() {
   addValue();
-
+  lightPatternFlash();
+  userButtonPattern();
 
   roundNumber += 1;
+  delay(1500);
 }
 
 
