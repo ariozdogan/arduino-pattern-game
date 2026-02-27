@@ -1,6 +1,15 @@
-Simple little arduino pattern game
+## Adruino Pattern Game (Simon)
 
-To use, install PlatformIO through VS Code extensions
+### Hardware requirements:
+- Arduino Uno
+- Breadboard
+- 4 LEDs
+- 4 push buttons
+- 4 220Ω resistors
+- 4 10kΩ resistors
+- 18 male-male wires
+
+To use, install PlatformIO through VS Code extensions (or use Arduino IDE)
 
 Circuit diagram:
-<img src="C:\Users\arioz\OneDrive\Desktop\Screenshot 2026-02-26 190411.png">
+<img src="/circuit-diagram.png">
