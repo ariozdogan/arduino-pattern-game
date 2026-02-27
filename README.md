@@ -12,4 +12,4 @@
 To use, install PlatformIO through VS Code extensions (or use Arduino IDE)
 
 Circuit diagram:
-<img src="/circuit-diagram.png">
+<img src="/include/circuit-diagram.png">
